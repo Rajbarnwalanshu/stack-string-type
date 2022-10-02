@@ -1,0 +1,84 @@
+int push(char stack[][80],int*top,char data[80],int size)
+{
+
+    if(*top==size-1)
+        return(-1);
+    else
+        {
+        *top= *top+1;
+        strcpy(stack[*top],data);
+    return(1);
+    }
+}
+int pop(char stack[][80],int*top,char data[80])
+{
+
+    if(*top==-1)
+        return(-1);
+    else{
+        strcpy(data, stack[*top]);
+        *top=*top-1;
+        return(1);
+
+    }
+}
+void display(char stack[][80],int top)
+{
+
+    if(top>=0)
+    {
+
+        printf("\n the elements in stack \n");
+        for(int i=top; i>=0;i--)
+        puts(stack[i]);
+    }
+    else{
+        printf("\n the stack is empty");
+    }
+}
+int main()
+{
+    char nm[80];
+    int top,ch,reply,size;
+    printf("enter the size of stack : ");
+    scanf("%d",&size);
+    char stack[size][80];
+    top=-1;
+    printf("\nMENU\n1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n");
+    while(1)
+    {
+
+        printf("choose operation : ");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+        case 1:
+            printf("\n enter string : ");
+            scanf("%s",nm);
+            reply=push(stack,&top,nm,size);
+            if(reply==-1)
+                printf("stack is full");
+            else
+                printf("%s is pushed in stack \n\n",nm);
+            break;
+        case 2:
+            reply=pop(stack,&top,nm);
+            if (reply==-1)
+                printf("stack is empty\n");
+            else
+                printf("poped string is : %s\n",nm);
+            printf("\n");
+            break ;
+        case 3:
+            display(stack,top);
+            break;
+        case 4:
+            exit(0);
+        default:
+            printf("invalid operation\n");
+
+
+        }
+    }
+    return 0;
+}
