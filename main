@@ -1,10 +1,11 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-int push(char stack[][80],int*top,char data[80],int size)
+
+int push(char stack[][80],int*top,char data[80],int s)
 {
 
-    if(*top==size-1)
+    if(*top==s-1)
         return(-1);
     else
         {
@@ -42,10 +43,10 @@ void display(char stack[][80],int top)
 int main()
 {
     char nm[80];
-    int top,ch,reply,size;
+    int top,ch,reply,s;
     printf("enter the size of stack : ");
-    scanf("%d",&size);
-    char stack[size][80];
+    scanf("%d",&s);
+    char stack[s][80];
     top=-1;
     printf("\nMENU\n1.PUSH\n2.POP\n3.DISPLAY\n4.EXIT\n");
     while(1)
@@ -58,7 +59,7 @@ int main()
         case 1:
             printf("\n enter string : ");
             scanf("%s",nm);
-            reply=push(stack,&top,nm,size);
+            reply=push(stack,&top,nm,s);
             if(reply==-1)
                 printf("stack is full");
             else
